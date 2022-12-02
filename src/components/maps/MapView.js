@@ -1,23 +1,19 @@
-import  { useState } from 'react'
+//import  { useState } from 'react'
 import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 
 const center = [40.41625039937417, -3.7009149751910013];
 
-const MapView = () => {
+const MapView = (props) => {
     
-    const [pos, setPos] = useState({});
-
     function LocationMarker() {
         useMapEvents({
             click: (e) => {
-                setPos(e.latlng);   
+                props.posHandler(e.latlng);   
             },
         })
         return null
     }
-
-    console.log(pos);
 
     return (
         <div>
@@ -36,3 +32,7 @@ const MapView = () => {
     )
 }
 export { MapView }
+
+/*
+
+*/

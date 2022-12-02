@@ -1,6 +1,7 @@
 Work in progress....
 
 Install:
-npm install
-npm install react react-dom leaflet
+npm install<br>
+npm install axios<br>
+npm install react react-dom leaflet<br>
 npm install react-leaflet

@@ -30,7 +30,13 @@ body{
   border: 1px solid #00ADB5;
 }
 
-h1{
+#info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1, h3, p{
   color: #EEEEEE;
   font-family: "Gill Sans", sans-serif;
 }
