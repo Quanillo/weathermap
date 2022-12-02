@@ -9,7 +9,7 @@ const MapView = (props) => {
     function LocationMarker() {
         useMapEvents({
             click: (e) => {
-                props.posHandler(e.latlng);   
+                props.posHandler(e.latlng);
             },
         })
         return null
