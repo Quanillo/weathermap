@@ -4,7 +4,11 @@ import { MapView } from './components/maps/MapView'
 function App() {
   return (
     <div className="App">
-     <MapView />
+      <h1>Map</h1>
+    <div  id="map">
+      <MapView />
+    </div>
+     
     </div>
   );
 }

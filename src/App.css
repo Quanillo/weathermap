@@ -1,7 +1,46 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html{
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+  background-color: #303841;
+}
+
+body{
+  height: 100;
+  width: 100%;
+  font-family: 'Masmuseh', normal;
+}
+
 .App {
+  height: 100;
+  width: 100%;
   text-align: center;
+
 }
 
 #map {
   position: relative;
+  height: 50vh;
+  margin: 2em;
+  border: 1px solid #00ADB5;
 }
+
+h1{
+  color: #EEEEEE;
+  font-family: "Gill Sans", sans-serif;
+}
+
+
+/*
+https://colorhunt.co/palettes/dark
+#Paleta random#
+303841
+3A4750
+00ADB5
+EEEEEE
+*/
