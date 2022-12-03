@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react'
 import axios from 'axios'
+
 const Place = ({place}) => {
     const [ country, setCountry ] = useState({data: null})
     useEffect(() => {
@@ -10,6 +11,7 @@ const Place = ({place}) => {
             });
         }
       }, [place]);
+      
     if(place.data===null || country.data===null){
         return <p></p>
     }
@@ -17,7 +19,7 @@ const Place = ({place}) => {
        
         return (
             <div>
-                <img src={country.flags.svg}  width="100" height="100" />
+                <img src={country.flags.png}  width="100" height="auto" />
                 <h3>{place.name}</h3>
                 <p>{country.name.common}</p>
                 <p>{country.region}</p>

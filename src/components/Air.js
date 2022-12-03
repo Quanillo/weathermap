@@ -20,6 +20,7 @@ const Air = ({air}) => {
         setAqui();
         return (
             <div>
+                <br /><br /><br /><br />
                 <h3>Air Pollution</h3>
                 <p>AQI(Air Quality Index): {aqi}</p>
                 <br />

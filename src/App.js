@@ -41,7 +41,8 @@ function App() {
     if (pos.data !== null) {
       axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${pos.lat}&lon=${pos.lng}&appid=${key}`)
         .then((data) => {
-          setPlace(data.data[0]);
+            if(data.data.length>0)
+              setPlace(data.data[0]);
         });
     }
   }, [pos]);

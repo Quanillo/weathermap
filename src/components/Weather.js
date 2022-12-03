@@ -12,7 +12,7 @@ const Weather = ({weather}) => {
                 <p>Temperature: {weather.main.temp}°C</p>
                 <p>Thermal sensation: {weather.main.feels_like}°C </p>
                 <p><span>Max: {weather.main.temp_max}°C</span><span>&nbsp;&nbsp;&nbsp;&nbsp;Min: {weather.main.temp_min}°C</span></p>
-                <p>Humidity: {weather.main.humidity}</p>
+                <p>Humidity: {weather.main.humidity}%</p>
             </div>
         )
     }
