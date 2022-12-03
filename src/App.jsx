@@ -51,10 +51,9 @@ function App() {
 
   useEffect(() => {
     if (pos.data !== null) {
-      axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${pos.lat}&lon=${pos.lng}&appid=${key}`)
+      axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${pos.lat}&lon=${pos.lng}&units=metric&appid=${key}`)
         .then((data) => {
-          setForecast(data)  
-          console.log(data)
+          setForecast(data.data)
         });
     }
   }, [pos]);
@@ -70,7 +69,9 @@ function App() {
         <Weather weather={weather} />
         <Air air={air} />
       </div>
-
+      <div>
+        <Forecast forecast={forecast}/>
+      </div>
     </div>
   );
 }
