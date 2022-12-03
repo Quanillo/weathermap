@@ -5,6 +5,7 @@ import { MapView } from './components/maps/MapView'
 import { Weather } from './components/Weather'
 import { Air } from './components/Air'
 import { Place } from './components/Place'
+import { Forecast } from './components/Forecast'
 
 const key = import.meta.env.VITE_API_KEY
 
@@ -13,10 +14,11 @@ function App() {
   const [weather, setWeather] = useState({ data: null });
   const [air, setAir] = useState({ data: null });
   const [place, setPlace] = useState({ data: null });
+  const [forecast, setForecast] = useState({ data: null });
 
-  function posHandler(param) {
-    const newParam = param;
-    setPos(newParam);
+  function posHandler(latlon) {
+    const newPos = latlon;
+    setPos(newPos);
   }
 
   useEffect(() => {
@@ -43,6 +45,16 @@ function App() {
         .then((data) => {
             if(data.data.length>0)
               setPlace(data.data[0]);
+        });
+    }
+  }, [pos]);
+
+  useEffect(() => {
+    if (pos.data !== null) {
+      axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${pos.lat}&lon=${pos.lng}&appid=${key}`)
+        .then((data) => {
+          setForecast(data)  
+          console.log(data)
         });
     }
   }, [pos]);
