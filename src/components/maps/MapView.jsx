@@ -14,7 +14,6 @@ const MapView = (props) => {
         })
         return null
     }
-
     return (
         <div >
             <MapContainer
