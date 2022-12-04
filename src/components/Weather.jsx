@@ -4,7 +4,7 @@ const Weather = ({ weather }) => {
         <div>
             {
                 weather.data !== 'null' && weather.data !== null
-                    ? <div>
+                    ? <div id="infoChildWeather" class="infoChild">
                         <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}></img>
                         <h3>{weather.weather[0].main}</h3>
                         <p>{weather.weather[0].description}</p>

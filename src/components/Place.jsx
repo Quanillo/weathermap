@@ -17,7 +17,7 @@ const Place = ({ place }) => {
             {
                 place.data !== 'null' && place.data !== null && country.data !== 'null' && country.data !== null
                     ?
-                    <div>
+                    <div  class="infoChild">
                         <img src={country.flags.png} width="100" height="auto" />
                         <h3>{place.name}</h3>
                         <p>{country.name.common}</p>

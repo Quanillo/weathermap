@@ -1,26 +1,31 @@
 const Forecast = ({ forecast }) => {
 
     if (forecast.data !== 'null' && forecast.data !== null) {
-        const forecastItems = forecast.list.map((item, index) => {
-            {
-                {console.log(item.dt_txt)}
-                <li>{item.dt_txt}</li>
-            }
-        })
-
+        console.log(forecast)
         return (
             <div>
                 {
                     <div>
                         {
                             <ul>
-                                {forecastItems}
+                                {forecast.list.filter((x, index)=>index%4===0).map((item=>
+                                        <li key={item.dt_txt} >
+                                            <div>
+                                            <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+                                                <p>{item.dt_txt}</p>
+                                                <p>{item.weather[0].main}</p>
+                                                <p>{item.weather[0].description}</p>
+                                                <p>{item.main.temp}°C</p>
+                                                <p>{item.main.humidity}%</p>
+                                            </div>
+                                        </li>
+                                ))}
                             </ul>
                         }
                     </div>
                 }
 
-            </div>
+            </div >
         )
     }
     else {
@@ -30,15 +35,4 @@ const Forecast = ({ forecast }) => {
 }
 export { Forecast }
 
-/*
-                        <div>
-                                <p>{forecast.list[0].dt_txt}</p>
-                                <p>{forecast.list[10].dt_txt}</p>
-                            </div>
-
-
-                                function Forecasts(list) {
- <li>{props.value}</li>
-    }
-*/
 

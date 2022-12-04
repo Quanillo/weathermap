@@ -69,7 +69,7 @@ function App() {
         <Weather weather={weather} />
         <Air air={air} />
       </div>
-      <div>
+      <div id="forecast">
         <Forecast forecast={forecast}/>
       </div>
     </div>

@@ -16,7 +16,7 @@ const MapView = (props) => {
     }
 
     return (
-        <div>
+        <div >
             <MapContainer
                 center={center}
                 zoom={1.5}

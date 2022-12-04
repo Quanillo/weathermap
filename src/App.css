@@ -25,7 +25,7 @@ body{
 
 #map {
   position: relative;
-  height: 50vh;
+  height: 50.3vh;
   margin: 2em;
   border: 1px solid #00ADB5;
 }
@@ -36,11 +36,38 @@ body{
   align-items: center;
 }
 
+#forecast{
+  margin: 2em;
+  margin-bottom: 2em;
+}
+
+.infoChild{
+  background-color: #3A4750;
+  padding:2em;
+  border: 1px solid #00ADB5;
+  border-radius: 0.5em;
+}
+
+#infoChildWeather{
+  padding: 0 2em 2em 2em;
+}
+
 h1, h3, p{
   color: #EEEEEE;
   font-family: "Gill Sans", sans-serif;
 }
 
+ul {
+  column-count: 10;
+  background-color: #3A4750;
+  padding:2em;
+  border: 1px solid #00ADB5;
+  border-radius: 0.5em;
+}
+
+li{
+  list-style-type: none;
+}
 
 /*
 https://colorhunt.co/palettes/dark
