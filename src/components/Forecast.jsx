@@ -2,12 +2,24 @@ const Forecast = ({ forecast }) => {
 
     if (forecast.data !== 'null' && forecast.data !== null) {
 
-        let date = new Date(forecast.list[0].dt_txt)
-//        console.log(date.toLocaleDateString('en-US', {weekday: 'long',}))
-        console.log(date.getDay())
-        const forecastArr = forecast.list.map((x,index,arr)=>{
-            if(x.dt_txt.getDay !== arr[index-1]){}
-        })
+        //let date = new Date(forecast.list[0].dt_txt)
+        //console.log(date.toLocaleDateString('en-US', {weekday: 'long',}))
+        //console.log(date.getDay())
+        function groupByDayList (list) {
+            let aux = []
+            return list.reduce((acc, el, index, src)=>{
+                if(el.dt_txt.getDay !== src[index-1].dt_txt.getDay){
+                    acc.push(aux);
+                    aux = [];
+                    aux.push(el);
+                }
+                else{
+                    aux.push(el);
+                }
+            })
+        }
+        let a = groupByDayList(forecast.list)
+        a.map(x=>console.log(x))
         return (
             <div>
                 {
