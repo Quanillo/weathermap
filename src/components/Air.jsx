@@ -17,7 +17,7 @@ const Air = ({ air }) => {
         setAqui();
         return (
             <div>
-                <div class="infoChild">
+                <div className="infoChild">
                     <h3>Air Pollution</h3>
                     <p>AQI(Air Quality Index): {aqi}</p>
                     <br />

@@ -1,14 +1,16 @@
 const Forecast = ({ forecast }) => {
-
     if (forecast.data !== 'null' && forecast.data !== null) {
-
-        //let date = new Date(forecast.list[0].dt_txt)
-        //console.log(date.toLocaleDateString('en-US', {weekday: 'long',}))
-        //console.log(date.getDay())
-        function groupByDayList (list) {
+        let date = Date.parse(forecast.list[0].dt_txt)
+        console.log(date)
+        let a = []; 
+        function groupByDayList(list){
+            
             let aux = []
-            return list.reduce((acc, el, index, src)=>{
-                if(el.dt_txt.getDay !== src[index-1].dt_txt.getDay){
+           
+            a = list.reduce(function(acc, el, index, src){
+                //console.log(el.dt_txt)
+                if(index!== 0 && el.dt_txt.getDay !== src[index-1].dt_txt.getDay){ 
+                    //console.log(el)     
                     acc.push(aux);
                     aux = [];
                     aux.push(el);
@@ -16,10 +18,9 @@ const Forecast = ({ forecast }) => {
                 else{
                     aux.push(el);
                 }
-            })
+            }, [])
         }
-        let a = groupByDayList(forecast.list)
-        a.map(x=>console.log(x))
+        groupByDayList(forecast.list)
         return (
             <div>
                 {
@@ -47,3 +48,9 @@ const Forecast = ({ forecast }) => {
     }
 }
 export { Forecast }
+
+
+
+        //let date = new Date(forecast.list[0].dt_txt)
+        //console.log(date.toLocaleDateString('en-US', {weekday: 'long',}))
+        //console.log(date.getDay())
