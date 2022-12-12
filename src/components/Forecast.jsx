@@ -1,34 +1,33 @@
-const Forecast = ({ forecast }) => {
+import getDayOfYear from "date-fns/getDayOfYear";
+
+const Forecast = ({ forecast }, props) => {
     if (forecast.data !== 'null' && forecast.data !== null) {
-        let date = Date.parse(forecast.list[0].dt_txt)
-        console.log(date)
-        let a = []; 
-        function groupByDayList(list){
-            
+        const groupByDayList = (list) => {    
+            let a = []; 
             let aux = []
-           
-            a = list.reduce(function(acc, el, index, src){
-                //console.log(el.dt_txt)
-                if(index!== 0 && el.dt_txt.getDay !== src[index-1].dt_txt.getDay){ 
-                    //console.log(el)     
-                    acc.push(aux);
+            list.map(function(el, index, src){
+                if(index!== 0 && getDayOfYear(Date.parse(el.dt_txt)) !== getDayOfYear(Date.parse(src[index-1].dt_txt))){    
+                    a.push(aux);
                     aux = [];
                     aux.push(el);
                 }
                 else{
                     aux.push(el);
                 }
-            }, [])
+            })
+            return a
         }
-        groupByDayList(forecast.list)
+        function setForecastDay(item){
+            props.handleForecastDay(item);
+        }
         return (
             <div>
                 {
                 <ul>
-                    {forecast.list.filter((x, index)=>index%4===0).map((item=>
+                    {groupByDayList(forecast.list).map(x=>x.filter((j)=>j.dt_txt.split(' ')[1]==='12:00:00')).flat().map((item=>
                             <li key={item.dt_txt} >
-                                <div>
-                                <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+                                <div onClick={() => setForecastDay(item)}>
+                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
                                     <p>{item.dt_txt}</p>
                                     <p>{item.weather[0].main}</p>
                                     <p>{item.weather[0].description}</p>
@@ -49,8 +48,34 @@ const Forecast = ({ forecast }) => {
 }
 export { Forecast }
 
+/*
+
+                    {groupByDayList(forecast.list).map(x=>x.filter((j)=>j.dt_txt.split(' ')[1]==='12:00:00')).flat().map((item=>
+                            <li key={item.dt_txt} >
+                                <div>
+                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+                                    <p>{item.dt_txt}</p>
+                                    <p>{item.weather[0].main}</p>
+                                    <p>{item.weather[0].description}</p>
+                                    <p>{item.main.temp}°C</p>
+                                    <p>{item.main.humidity}%</p>
+                                </div>
+                            </li>
+                    ))}
 
 
-        //let date = new Date(forecast.list[0].dt_txt)
-        //console.log(date.toLocaleDateString('en-US', {weekday: 'long',}))
-        //console.log(date.getDay())
+
+                     {forecast.list.filter((x, index)=>index%4===0).map((item=>
+                            <li key={item.dt_txt} >
+                                <div>
+                                <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+                                    <p>{item.dt_txt}</p>
+                                    <p>{item.weather[0].main}</p>
+                                    <p>{item.weather[0].description}</p>
+                                    <p>{item.main.temp}°C</p>
+                                    <p>{item.main.humidity}%</p>
+                                </div>
+                            </li>
+                    ))}                   
+
+*/

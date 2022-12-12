@@ -21,6 +21,10 @@ function App() {
     setPos(newPos);
   }
 
+  function handleForecastDay(item){
+    console.log(item)
+  }
+
   useEffect(() => {
     if (pos.data !== null) {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${pos.lat}&lon=${pos.lng}&units=metric&appid=${key}`)
@@ -70,7 +74,7 @@ function App() {
         <Air air={air} />
       </div>
       <div id="forecast">
-        <Forecast forecast={forecast}/>
+        <Forecast forecast={forecast} props={handleForecastDay}/>
       </div>
     </div>
   );
