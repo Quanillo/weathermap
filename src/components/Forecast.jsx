@@ -1,7 +1,12 @@
 import getDayOfYear from "date-fns/getDayOfYear";
+import format from "date-fns/format";
+import { ForecastDay } from "./ForecastDay";
+import { useState } from 'react'
+const Forecast = (props) => {
+    const [forecastDay, setForecastDay] = useState({ data: null });
+    const [showForecastDay, setShowForecastDay] = useState(false);
+    if (props.forecast.data !== 'null' && props.forecast.data !== null) {
 
-const Forecast = ({ forecast }, props) => {
-    if (forecast.data !== 'null' && forecast.data !== null) {
         const groupByDayList = (list) => {    
             let a = []; 
             let aux = []
@@ -17,30 +22,37 @@ const Forecast = ({ forecast }, props) => {
             })
             return a
         }
-        function setForecastDay(item){
-            props.handleForecastDay(item);
+        const a = (item) => {
+            setForecastDay(item);
+            setShowForecastDay(true);
         }
-        return (
-            <div>
-                {
-                <ul>
-                    {groupByDayList(forecast.list).map(x=>x.filter((j)=>j.dt_txt.split(' ')[1]==='12:00:00')).flat().map((item=>
-                            <li key={item.dt_txt} >
-                                <div onClick={() => setForecastDay(item)}>
-                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
-                                    <p>{item.dt_txt}</p>
-                                    <p>{item.weather[0].main}</p>
-                                    <p>{item.weather[0].description}</p>
-                                    <p>{item.main.temp}°C</p>
-                                    <p>{item.main.humidity}%</p>
+        if(!showForecastDay){
+            return (
+                    <div className="forecast">
+                        {groupByDayList(props.forecast.list).map(x=>x.filter((j)=>j.dt_txt.split(' ')[1]==='12:00:00')).flat().map((item=>
+                                <div   className="forecastElement"  key={item.dt_txt} onClick={() => a(item)}>
+                                    
+                                        <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
+                                        <p className="title">{format(Date.parse(item.dt_txt) , 'EEEE')}</p>
+                                        <p className="temp">{item.main.temp}°C</p>
+                                        <p>{item.weather[0].main}</p>
+                                        <p>{item.weather[0].description}</p>
+                                        <p>{item.main.humidity}%</p>
+                                  
                                 </div>
-                            </li>
-                    ))}
-                </ul>
-                }       
-
-            </div >
-        )
+                        ))}
+                    </div>
+            )
+        }
+        else{
+            return (
+                <div className="forecast">
+                    <ForecastDay forecastDay={forecastDay} forecast={props.forecast.list}/>
+                    <button onClick={()=> setShowForecastDay(false)}>back</button>
+                </div>
+            )
+        }
+        
     }
     else {
         return null;
@@ -48,34 +60,3 @@ const Forecast = ({ forecast }, props) => {
 }
 export { Forecast }
 
-/*
-
-                    {groupByDayList(forecast.list).map(x=>x.filter((j)=>j.dt_txt.split(' ')[1]==='12:00:00')).flat().map((item=>
-                            <li key={item.dt_txt} >
-                                <div>
-                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
-                                    <p>{item.dt_txt}</p>
-                                    <p>{item.weather[0].main}</p>
-                                    <p>{item.weather[0].description}</p>
-                                    <p>{item.main.temp}°C</p>
-                                    <p>{item.main.humidity}%</p>
-                                </div>
-                            </li>
-                    ))}
-
-
-
-                     {forecast.list.filter((x, index)=>index%4===0).map((item=>
-                            <li key={item.dt_txt} >
-                                <div>
-                                <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img>
-                                    <p>{item.dt_txt}</p>
-                                    <p>{item.weather[0].main}</p>
-                                    <p>{item.weather[0].description}</p>
-                                    <p>{item.main.temp}°C</p>
-                                    <p>{item.main.humidity}%</p>
-                                </div>
-                            </li>
-                    ))}                   
-
-*/

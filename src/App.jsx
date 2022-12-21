@@ -21,10 +21,6 @@ function App() {
     setPos(newPos);
   }
 
-  function handleForecastDay(item){
-    console.log(item)
-  }
-
   useEffect(() => {
     if (pos.data !== null) {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${pos.lat}&lon=${pos.lng}&units=metric&appid=${key}`)
@@ -68,16 +64,20 @@ function App() {
       <div id="map">
         <MapView posHandler={posHandler} />
       </div>
+      <div id="forecast">
+        <Forecast forecast={forecast}/>
+      </div>
       <div id="info">
         <Place place={place} />
         <Weather weather={weather} />
         <Air air={air} />
-      </div>
-      <div id="forecast">
-        <Forecast forecast={forecast} props={handleForecastDay}/>
       </div>
     </div>
   );
 }
 
 export default App
+
+/*
+        <Weather weather={weather} />
+*/
