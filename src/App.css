@@ -7,7 +7,7 @@ html{
   height: 100%;
   width: 100%;
   scroll-behavior: smooth;
-  background-color: #303841;
+  background-color: #212421;
 }
 
 body{
@@ -23,24 +23,70 @@ body{
 
 }
 h1, h3, p{
-  color: #EEEEEE;
+  color: #e5dacf;
   font-family: "Gill Sans", sans-serif;
 }
+button{
+  width: 6em;
+  height: 3em;
+}
+#title{
+  font-size: 2.5em;
+  color: #005ea8;
+  
+}
+.itemHead{
+  font-size: 3em;
+  color: #58c1ab;
+}
+#head{
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  background-color: #333031;
+
+}
 #map {
-  height: 50.3vh;
+  height: 50%;
+  width: 50%;
   margin: 2em;
-  border: 1px solid #00ADB5;
+}
+#info {
+  height: 50%;
+  width: 50%;
+  margin: 2em;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
 }
 
-#info {
-  display: flex;
-  justify-content: space-around;
+#weather{
+  height: 50%;
+  width: 100%;
+  display:flex;
+  flex-direction:row;
   align-items: center;
+  justify-content: space-around;
+}
+#weatherElement{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  margin: 1em; 
+}
+#imageWeather{
+  height: 80%;
+  width:80%;
 }
 
 #forecast{
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
+  background-color: #1a1d1a;
 }
 .forecast{
   height: 100%;
@@ -66,7 +112,7 @@ h1, h3, p{
 }
 .title{
   font-size: 1.5em;
-  color:#76f8ff;
+  color:#13a5da;
 }
 /*
 .forecast{
@@ -124,4 +170,12 @@ https://colorhunt.co/palettes/dark
 3A4750
 00ADB5
 EEEEEE
+
+1a1d1a
+212421
+e5e2e5
+
+fbffff
+005ea8
+13a5da
 */

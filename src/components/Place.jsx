@@ -18,8 +18,8 @@ const Place = ({ place }) => {
                 place.data !== 'null' && place.data !== null && country.data !== 'null' && country.data !== null
                     ?
                     <div  className="infoChild">
-                        <h3 className='title'>{place.name}</h3>
-                        <img src={country.flags.png} width="100" height="auto" />
+                        <h3 className='itemHead'>{place.name}</h3>
+                        <img src={country.flags.png} width="200" height="auto" />
                         <p>{country.name.common}</p>
                         <p>{country.region}</p>
                         <p>Latitude: {place.lat}</p>

@@ -12,7 +12,7 @@ const Forecast = (props) => {
             let aux = []
             list.map(function(el, index, src){
                 if(index!== 0 && getDayOfYear(Date.parse(el.dt_txt)) !== getDayOfYear(Date.parse(src[index-1].dt_txt))){    
-                    a.push(aux);
+                    a.push(aux); 
                     aux = [];
                     aux.push(el);
                 }
@@ -47,8 +47,8 @@ const Forecast = (props) => {
         else{
             return (
                 <div className="forecast">
+                     <button onClick={()=> setShowForecastDay(false)}>back</button>
                     <ForecastDay forecastDay={forecastDay} forecast={props.forecast.list}/>
-                    <button onClick={()=> setShowForecastDay(false)}>back</button>
                 </div>
             )
         }

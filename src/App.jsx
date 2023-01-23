@@ -60,17 +60,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weather Map</h1>
-      <div id="map">
-        <MapView posHandler={posHandler} />
+      <div id="head">
+        <div id="map">
+          <MapView posHandler={posHandler} />
+        </div>
+        <div id="info">
+          <Place place={place} />
+        </div>
       </div>
+      <div id="weather">
+          <Weather weather={weather} /> 
+          <Air air={air} />
+      </div>  
       <div id="forecast">
         <Forecast forecast={forecast}/>
-      </div>
-      <div id="info">
-        <Place place={place} />
-        <Weather weather={weather} />
-        <Air air={air} />
       </div>
     </div>
   );
@@ -80,4 +83,12 @@ export default App
 
 /*
         <Weather weather={weather} />
+
+          background: linear-gradient(
+    to right,
+    #e5dacf 0%,
+    #e5dacf 50%,
+    #333031 50%,
+    #333031 100%
+  );
 */
