@@ -45,13 +45,25 @@ button{
   display:flex;
   flex-direction:row;
   background-color: #333031;
-
+}
+#initHead{
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  background-color: #333031;
+}
+#initMap{
+  height: 100%;
+  width: 100%;
+  margin: 2em;
 }
 #map {
   height: 50%;
   width: 50%;
   margin: 2em;
 }
+
 #info {
   height: 50%;
   width: 50%;

@@ -58,7 +58,7 @@ function App() {
     }
   }, [pos]);
 
-  return (
+  if(pos.data!==null) {return (
     <div className="App">
       <div id="head">
         <div id="map">
@@ -76,7 +76,18 @@ function App() {
         <Forecast forecast={forecast}/>
       </div>
     </div>
-  );
+  )}
+  else{return (
+    <div className="App">
+      <div id="initHead">
+        <div id="initMap">
+          <MapView posHandler={posHandler} />
+          <h1>Elige un lugar en el mapa</h1>
+        </div>
+      </div>
+    </div>
+  )
+  }
 }
 
 export default App
